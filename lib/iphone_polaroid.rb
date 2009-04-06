@@ -83,7 +83,7 @@ module IPhonePolaroid
       img = border.composite(img, Magick::NorthWestGravity, o[:border_width],
         o[:border_width], Magick::OverCompositeOp)
 
-      caption = exif.date_time.strftime('%m/%d/%Y')
+      caption = exif.date_time.strftime('%m/%d/%Y').sub(/(^|\/)0/, '\1')
 
       unless lat.nil? or lon.nil?
         caption =
