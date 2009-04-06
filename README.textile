@@ -1,0 +1,24 @@
+Makes a picture from an iPhone camera look like a Polaroid. Adds date and
+city and state where the picture was taken at the bottom.
+
+!http://matthewm.boedicker.org/img/polaroid.jpeg!
+
+Date is from EXIF data.
+
+City and state are reverse geocoded from latitude and longitude in EXIF data.
+
+Inspired by and some code borrowed from "RMagick Polaroid effect page":http://rmagick.rubyforge.org/Polaroid/polaroid.html
+
+Font used in example is "Amaze":http://www.searchfreefonts.com/free/amaze.htm
+
+Example usage:
+
+<pre>
+<code>
+require 'iphone_polaroid'
+
+img = Magick::Image::read('input.jpeg').first
+
+img.polaroid.write('polaroid.jpeg')
+</code>
+</pre>
