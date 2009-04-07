@@ -83,21 +83,27 @@ module IPhonePolaroid
       img = border.composite(img, Magick::NorthWestGravity, o[:border_width],
         o[:border_width], Magick::OverCompositeOp)
 
-      caption = exif.date_time.strftime('%m/%d/%Y').sub(/(^|\/)0/, '\1')
+      unless exif.date_time.nil?
+        caption = exif.date_time.strftime('%m/%d/%Y').sub(/(^|\/)0/, '\1')
+      else
+        caption = ''
+      end
 
       unless lat.nil? or lon.nil?
         caption =
           "#{caption} #{IPhonePolaroid.lat_lon_to_city_state(lat, lon)}"
       end
 
-      text = Magick::Draw.new
-      text.annotate(img, 0, 0, 0, o[:border_width], caption) {
-        self.fill = o[:text_fill]
-        self.font = o[:text_font]
-        self.gravity = o[:text_gravity]
-        self.pointsize = o[:text_size]
-        self.stroke = o[:text_stroke]
-      }
+      unless caption.empty?
+        text = Magick::Draw.new
+        text.annotate(img, 0, 0, 0, o[:border_width], caption) {
+          self.fill = o[:text_fill]
+          self.font = o[:text_font]
+          self.gravity = o[:text_gravity]
+          self.pointsize = o[:text_size]
+          self.stroke = o[:text_stroke]
+        }
+      end
 
       img.background_color = 'none'
       amplitude = img.columns * o[:amplitude]
