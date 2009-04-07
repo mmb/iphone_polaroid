@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name     = 'iphone_polaroid'
-  s.version  = '0.0.2'
+  s.version  = '0.0.3'
   s.date     = '2009-04-05'
   s.summary  = 'Make iPhone camera pictures look like Polaroids'
   s.email    = 'matthewm@boedicker.org'
