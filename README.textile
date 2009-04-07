@@ -19,6 +19,6 @@ require 'iphone_polaroid'
 
 img = Magick::Image::read('input.jpeg').first
 
-img.polaroid.write('polaroid.jpeg')
+img.iphone_polaroid.write('polaroid.jpeg')
 </code>
 </pre>

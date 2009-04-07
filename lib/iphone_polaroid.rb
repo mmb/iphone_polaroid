@@ -50,7 +50,7 @@ module IPhonePolaroid
       @lon
     end
 
-    def polaroid(options={})
+    def iphone_polaroid(options={})
       o = {
         :photo_width => 216,
         :photo_height => 225,
